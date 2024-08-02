@@ -19,7 +19,7 @@ flags.DEFINE_string(
 flags.DEFINE_string("image_path", None, "Path to image.")
 flags.DEFINE_string("language_instruction", None, "Language instruction for task.")
 
-def main():
+def main(_):
     # load pre-trained/finetuned model
     from octo.model.octo_model import OctoModel
     model = OctoModel.load_pretrained(FLAGS.pretrained_path)
