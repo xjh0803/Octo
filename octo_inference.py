@@ -13,9 +13,7 @@ FLAGS = flags.FLAGS
 flags.DEFINE_string(
     "pretrained_path", None, "Path to pre-trained/finetuned Octo checkpoint directory."
 )
-flags.DEFINE_string(
-    "dataset_name", None, "Name of dataset loading for the model."
-)
+
 flags.DEFINE_string("image_path", None, "Path to image.")
 flags.DEFINE_string("language_instruction", None, "Language instruction for task.")
 
@@ -36,7 +34,7 @@ def main(_):
     action = model.sample_actions(
         observation,
         task,
-        unnormalization_statistics=model.dataset_statistics[FLAGS.dataset_name]["action"],
+        unnormalization_statistics=model.dataset_statistics["action"],
         rng=jax.random.PRNGKey(0)
     )
     print(action)   # [batch, action_chunk, action_dim]
